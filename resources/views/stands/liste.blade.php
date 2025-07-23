@@ -42,7 +42,7 @@
         <!-- Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 fade-in-section">
             <div class="card p-6 text-center">
-                <div class="text-3xl font-black text-white mb-2">{{ $stands->count() ?? '12' }}</div>
+{{--                <div class="text-3xl font-black text-white mb-2">{{ $stands->count() ?? '12' }}</div>--}}
                 <div class="text-white/60">Exposants</div>
             </div>
             <div class="card p-6 text-center">
@@ -106,7 +106,7 @@
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center space-x-2 text-white/50 text-sm">
                                 <i data-lucide="package" class="w-4 h-4"></i>
-                                <span>{{ $stand->produits_count ?? '8' }} produits</span>
+{{--                                <span>{{ $stand->produits_count ?? '8' }} produits</span>--}}
                             </div>
                             <div class="flex items-center space-x-2 text-white/50 text-sm">
                                 <i data-lucide="clock" class="w-4 h-4"></i>

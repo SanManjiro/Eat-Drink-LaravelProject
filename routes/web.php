@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\StandController as AdminStandController;
+use App\Http\Controllers\StandController;
 
 // Home page
 Route::get('/', function () {
@@ -15,10 +17,6 @@ Route::get('/login', function () {
 
 
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
 Route::get('/registration-success', function () {
     return view('auth.registration-success');
 })->name('registration.success');
@@ -29,13 +27,8 @@ Route::post('/logout', function () {
 })->name('logout');
 
 // Public routes
-Route::get('/stands', function () {
-    return view('stands.liste');
-})->name('stands.index');
-
-Route::get('/stands/{id}', function ($id) {
-    return view('stands.detail', ['stand_id' => $id]);
-})->name('stands.show');
+Route::get('/stands', [StandController::class, 'index'])->name('stands.index');
+Route::get('/stands/{stand}', [StandController::class, 'show'])->name('stands.show');
 
 // Dashboard routes
 Route::get('/dashboard', function () {
@@ -138,6 +131,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('users.show');
 });
 
+// Route de test admin (temporaire)
+Route::get('/admin/test', function () {
+    Auth::loginUsingId(1); // Connexion auto admin
+    return redirect()->route('admin.stands.index');
+})->name('admin.test');
+
+// Routes Admin
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/stands', [AdminStandController::class, 'index'])->name('stands.index');
+    Route::get('/stands/{stand}', [AdminStandController::class, 'show'])->name('stands.show');
+    Route::post('/stands/{stand}/approve', [AdminStandController::class, 'approve'])->name('stands.approve');
+    Route::post('/stands/{stand}/reject', [AdminStandController::class, 'reject'])->name('stands.reject');
+});
+
 // API routes for AJAX
 Route::prefix('api')->group(function () {
     Route::get('/search/stands', function () {
@@ -171,4 +178,5 @@ Route::prefix('api')->group(function () {
 Route::fallback(function () {
     return view('errors.404');
 });
-require __DIR__.'/auth.php';
+
+ require __DIR__.'/auth.php';

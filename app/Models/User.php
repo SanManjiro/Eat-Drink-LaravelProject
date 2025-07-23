@@ -22,6 +22,9 @@ class User extends Authenticatable
         'nom_entreprise',
         'email',
         'password',
+        'role',
+        'telephone',
+        'adresse',
     ];
 
     /**
@@ -33,9 +36,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    protected $fillable = [
-        'name', 'email', 'password', 'nom_entreprise', 'role', 'telephone', 'adresse',
-    ];
+
 
 // Relations
     public function stand()

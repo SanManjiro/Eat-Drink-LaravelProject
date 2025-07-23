@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("nom_entreprise");
             $table->string("email")->unique();
             $table->string("password");
-            $table->string("role")->default("entrepreneur_en_attente");
+//            $table->string("role")->default("entrepreneur_en_attente");
 
 
         });
