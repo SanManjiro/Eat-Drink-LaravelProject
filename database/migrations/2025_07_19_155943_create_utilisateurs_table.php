@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string("nom_entreprise");
             $table->string("email")->unique();
-            $table->string("mot_de_passe");
-            $table->string("role");
+            $table->string("password");
+//            $table->string("role")->default("entrepreneur_en_attente");
 
 
         });

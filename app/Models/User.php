@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $table = 'utilisateurs';
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -18,9 +19,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nom_entreprise',
         'email',
         'password',
+        'role',
+        'telephone',
+        'adresse',
     ];
 
     /**
@@ -32,6 +36,29 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+// Relations
+    public function stand()
+    {
+        return $this->hasOne(Stand::class, 'utilisateur_id');
+    }
+
+// Helper Methods
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isEntrepreneurApprouve()
+    {
+        return $this->role === 'entrepreneur_approuve';
+    }
+
+    public function isEntrepreneurEnAttente()
+    {
+        return $this->role === 'entrepreneur_en_attente';
+    }
 
     /**
      * Get the attributes that should be cast.
