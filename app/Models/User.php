@@ -33,6 +33,31 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $fillable = [
+        'name', 'email', 'password', 'nom_entreprise', 'role', 'telephone', 'adresse',
+    ];
+
+// Relations
+    public function stand()
+    {
+        return $this->hasOne(Stand::class, 'utilisateur_id');
+    }
+
+// Helper Methods
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isEntrepreneurApprouve()
+    {
+        return $this->role === 'entrepreneur_approuve';
+    }
+
+    public function isEntrepreneurEnAttente()
+    {
+        return $this->role === 'entrepreneur_en_attente';
+    }
 
     /**
      * Get the attributes that should be cast.
