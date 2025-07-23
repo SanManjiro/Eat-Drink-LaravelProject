@@ -1,0 +1,83 @@
+@extends('layouts.app')
+
+@section('title', 'Inscription Réussie')
+
+@section('content')
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+    <div class="max-w-lg w-full">
+        <div class="card p-8 text-center animate-fade-in-up">
+            <!-- Success Icon -->
+            <div class="flex items-center justify-center mb-8">
+                <div class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center shadow-glow animate-pulse">
+                    <i data-lucide="check" class="w-12 h-12 text-white"></i>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <h1 class="text-4xl font-black text-white mb-4">Demande Envoyée !</h1>
+            <p class="text-xl text-white/70 mb-8 leading-relaxed">
+                Votre demande de stand a été soumise avec succès.
+            </p>
+
+            <!-- Status Info -->
+            <div class="bg-blue-500/20 border border-blue-500/30 rounded-2xl p-6 mb-8">
+                <div class="flex items-center justify-center mb-4">
+                    <i data-lucide="clock" class="w-8 h-8 text-blue-300"></i>
+                </div>
+                <h3 class="text-xl font-bold text-blue-300 mb-3">En Attente d'Approbation</h3>
+                <p class="text-blue-300/80 text-sm leading-relaxed">
+                    Notre équipe va examiner votre demande dans les plus brefs délais.
+                    Vous recevrez un email de confirmation une fois votre compte approuvé.
+                </p>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="space-y-4 mb-8">
+                <h3 class="text-lg font-semibold text-white mb-4">Prochaines étapes :</h3>
+                <div class="space-y-3 text-left">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-0.5">
+                            <span class="text-white text-sm font-bold">1</span>
+                        </div>
+                        <p class="text-white/70">Examen de votre demande par notre équipe</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-0.5">
+                            <span class="text-white text-sm font-bold">2</span>
+                        </div>
+                        <p class="text-white/70">Notification par email de l'approbation</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-0.5">
+                            <span class="text-white text-sm font-bold">3</span>
+                        </div>
+                        <p class="text-white/70">Accès à votre tableau de bord entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="space-y-4">
+                <a href="{{ route('home') }}" class="btn-primary w-full justify-center">
+                    <i data-lucide="home" class="w-5 h-5 mr-2"></i>
+                    Retour à l'Accueil
+                </a>
+                <a href="{{ route('stands.index') }}" class="btn-secondary w-full justify-center">
+                    <i data-lucide="eye" class="w-5 h-5 mr-2"></i>
+                    Découvrir les Exposants
+                </a>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="mt-8 pt-6 border-t border-white/10">
+                <p class="text-white/50 text-sm">
+                    Des questions ? Contactez-nous à
+                    <a href="mailto:contact@eatdrink.com" class="text-white/70 hover:text-white transition-colors duration-300">
+                        contact@eatdrink.com
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
