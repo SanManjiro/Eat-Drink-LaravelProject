@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("nom");
             $table->string("description");
             $table->integer("prix");
-            $table->integer("image_url");
+            $table->string("image_url")->nullable();
             $table->foreignId('stand_id')->constrained('stands')->onDelete('cascade');
         });
     }
