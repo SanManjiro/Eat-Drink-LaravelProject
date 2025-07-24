@@ -79,10 +79,10 @@ class ProduitController extends Controller
     }
 
     public function dashboard()
-{
-    $produits = Produit::latest()->take(10)->get();
-    return view('dashboard', compact('produits'));
-}
+    {
+        $produits = Produit::latest()->take(10)->get();
+        return view('dashbord', compact('produits'));
+    }
     public function welcome()
     {
         return view('welcome');
